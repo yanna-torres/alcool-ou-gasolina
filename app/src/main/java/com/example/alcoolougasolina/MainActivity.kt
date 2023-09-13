@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         val gasolina: EditText = findViewById(R.id.edGasolina)
         val alcool: EditText = findViewById(R.id.edAlcool)
         val resultText: TextView = findViewById(R.id.result)
+        val swPercent: Switch = findViewById(R.id.swPercentual)
 
         btCalc.setOnClickListener(View.OnClickListener {
             resultText.setText("")
@@ -35,8 +36,6 @@ class MainActivity : AppCompatActivity() {
                 resultText.setText("Insira valores válidos")
             }
         })
-
-        val swPercent: Switch = findViewById(R.id.swPercentual)
         swPercent.setOnClickListener  {
             percentual = if (percentual == 0.75) {
                 0.7
