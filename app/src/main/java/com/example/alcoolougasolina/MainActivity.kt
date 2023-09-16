@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         val swPercent: Switch = findViewById(R.id.swPercentual)
 
         btCalc.setOnClickListener(View.OnClickListener {
-            resultText.setText("")
             if (gasolina.text.isNotEmpty() and alcool.text.isNotEmpty()) {
                 var gasPrice: Double = gasolina.text.toString().toDouble()
                 var etanolPrice: Double = alcool.text.toString().toDouble()
@@ -36,8 +35,9 @@ class MainActivity : AppCompatActivity() {
                 resultText.setText("Insira valores válidos")
             }
         })
-        swPercent.setOnClickListener  {
-            percentual = if (percentual == 0.75) {
+
+        swPercent.setOnCheckedChangeListener { compoundButton, isChecked ->
+            percentual = if (!isChecked) {
                 0.7
             } else {
                 0.75
