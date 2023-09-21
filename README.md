@@ -64,21 +64,21 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 ---
 
-## Ícone e Paleta de Cores
+## Ícone e Paleta de Cores :paintbrush:
 
-### Ícone
+### Ícone :framed_picture:
 
 Como pedido, o ícone do aplicativo mudou. O novo é um bico de abastecimento, retirado do site [Flaticon](https://www.flaticon.com/br/icone-gratis/combustivel_1505662?term=gasolina&page=1&position=18&origin=search&related_id=1505662), que fornece ícones de forma gratuita.
 
 ![new logo and old logo side by side](logo_changing.png)
 
-### Paleta de Cores
+### Paleta de Cores :art:
 
 As cores mudaram também, seguindo a paleta base a seguir:
 
 ![color pallete](paleta.png)
 
-### Novo layout e temas
+### Novo layout e temas :woman_artist:
 
 Com base nos dois tópicos anteriores e na tela já existente, os temas _claro_ e _escuro_ foram mudados e também ocorreu melhoria nos campos de texto.
 
@@ -88,6 +88,6 @@ Com base nos dois tópicos anteriores e na tela já existente, os temas _claro_ 
 
 ---
 
-## Usando o SharedPreferences
+## Usando o SharedPreferences :selfie:
 
 Por fim, foi implementado o mecanismo de Shared Preferences para guardar o valor escolhido no Switch, salvando e recuperadando a mesma no `onCreate`.
