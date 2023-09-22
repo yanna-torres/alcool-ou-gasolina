@@ -8,6 +8,8 @@
 > 
 > **Professor:** Dr. Windson Viana
 
+**Sumário: [A Atividade](#a-atividade-page_with_curl) • [Cálculo do melhor combustível](#cálculo-do-melhor-combustível-oncoming_automobile) • [Ícone, Paleta de Cores e Novo Layout](#ícone-paleta-de-cores-e-novo-layout-paintbrush) • [Usando o SharedPreferences](#novo-layout-e-temas-woman_artist) • [Resultados](#resultados-play_or_pause_button) •**
+
 ## A atividade :page_with_curl:
 
 Você deve fazer um aplicativo que facilite a vida de quem vai decidir se vai usar Álcool ou Gasolina no carro. Ele pode ter apenas uma única tela conforme mostrado. Você pode usar o [código base](https://github.com/windcarvalho/AlcoolOuGasolina) fornecido pelo professor ou construir o seu. 
@@ -75,7 +77,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 ---
 
-## Ícone e Paleta de Cores :paintbrush:
+## Ícone, Paleta de Cores e Novo Layout :paintbrush:
 
 ### Ícone :framed_picture:
 
@@ -138,3 +140,5 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 ![light result](light.gif)
 ![dark result](dark.gif)
+
+[Voltar ao início](#álcool-ou-gasolina-fuelpump)
