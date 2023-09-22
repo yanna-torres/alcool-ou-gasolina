@@ -141,4 +141,4 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ![light result](light.gif)
 ![dark result](dark.gif)
 
-[Voltar ao início](#álcool-ou-gasolina-fuelpump)
+[Voltar ao início &uarr;](#álcool-ou-gasolina-fuelpump)
