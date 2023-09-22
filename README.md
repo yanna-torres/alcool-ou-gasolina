@@ -27,28 +27,39 @@ O código a seguir manipula o que foi escrito nos campos de texto e realiza o c�
 Também foi adicionado um tratamento de erro na hora do cálculo, pois caso um dos campos de texto estiver vázio, é acionado um alerta e não é realizado nenhum cálculo, sendo que o próprio cálculo só é realizado ao clicar no botão.
 
 ```kotlin
+// váriaveis globais
+private var percentual:Double = 0.7
+
+private lateinit var btCalc : Button
+private lateinit var gasEdtTxt : EditText
+private lateinit var alcEdtTxt : EditText
+private lateinit var resTxt : TextView
+private lateinit var swPercent : Switch
+```
+
+```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     Log.d("PDM23","No onCreate, $percentual")
 
-    val btCalc: Button = findViewById(R.id.btCalcular)
-    val gasolina: EditText = findViewById(R.id.edGasolina)
-    val alcool: EditText = findViewById(R.id.edAlcool)
-    val resultText: TextView = findViewById(R.id.result)
-    val swPercent: Switch = findViewById(R.id.swPercentual)
+    btCalc = findViewById(R.id.btCalcular)
+    gasEdtTxt = findViewById(R.id.edGasolina)
+    alcEdtTxt = findViewById(R.id.edAlcool)
+    resTxt = findViewById(R.id.result)
+    swPercent= findViewById(R.id.swPercentual)
 
     btCalc.setOnClickListener(View.OnClickListener {
-        if (gasolina.text.isNotEmpty() and alcool.text.isNotEmpty()) {
-            var gasPrice: Double = gasolina.text.toString().toDouble()
-            var etanolPrice: Double = alcool.text.toString().toDouble()
+        if (gasEdtTxt.text.isNotEmpty() and alcEdtTxt.text.isNotEmpty()) {
+            var gasPrice: Double = gasEdtTxt.text.toString().toDouble()
+            var etanolPrice: Double = alcEdtTxt.text.toString().toDouble()
             if(etanolPrice <= percentual*gasPrice) {
-                resultText.setText("Álcool VALE a pena!")
+                resTxt.setText("Álcool vale a pena!")
             } else {
-                resultText.setText("Álcool NÃO vale a pena!")
+                resTxt.setText("Álcool NÃO vale a pena!")
             }
         } else {
-            resultText.setText("Insira valores válidos")
+            resTxt.setText("Insira valores válidos")
         }
     })
 
@@ -88,4 +99,37 @@ Com base nos dois tópicos anteriores e na tela já existente, os temas _claro_ 
 
 ## Usando o SharedPreferences :selfie:
 
-Por fim, foi implementado o mecanismo de Shared Preferences para guardar o valor escolhido no Switch, salvando e recuperadando a mesma no `onCreate`.
+Por fim, foi implementado o mecanismo de Shared Preferences para guardar o valor escolhido no Switch, salvando e recuperadando no `onCreate`. Em comparação ao código na seção "Cálculo do melhor combustível", adicionasse mais duas váriaveis globais e mudasse um pouco da lógica interna do `onCreate`, pois é necessário recuperar os estados.
+
+```kotlin
+// váriaveis globais
+private var isSwitchChecked: Boolean = false
+private lateinit var sharedPreferences : SharedPreferences
+```
+
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+    sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+    percentual = sharedPreferences.getFloat("percentual", 0.7F).toDouble()
+    isSwitchChecked = sharedPreferences.getBoolean("switchChecked", false)
+
+    // Restante do código...
+    swPercent.isChecked = isSwitchChecked
+    
+    // Restante do código...
+    
+    swPercent.setOnCheckedChangeListener { compoundButton, isChecked ->
+        percentual = if (!isChecked) {
+            0.7
+        } else {
+            0.75
+        }
+        isSwitchChecked = isChecked
+
+        sharedPreferences.edit()
+            .putFloat("percentual", percentual.toFloat())
+            .putBoolean("switchChecked", isSwitchChecked)
+            .apply()
+    }
+}
+```

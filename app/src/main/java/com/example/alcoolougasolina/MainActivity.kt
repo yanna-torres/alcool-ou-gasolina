@@ -1,5 +1,7 @@
 package com.example.alcoolougasolina
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,29 +12,43 @@ import android.widget.Switch
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
-    var percentual:Double = 0.7
+    private var percentual:Double = 0.7
+    private var isSwitchChecked: Boolean = false
+
+    private lateinit var btCalc : Button
+    private lateinit var gasEdtTxt : EditText
+    private lateinit var alcEdtTxt : EditText
+    private lateinit var resTxt : TextView
+    private lateinit var swPercent : Switch
+    private lateinit var sharedPreferences : SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d("PDM23","No onCreate, $percentual")
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        percentual = sharedPreferences.getFloat("percentual", 0.7F).toDouble()
+        isSwitchChecked = sharedPreferences.getBoolean("switchChecked", false)
 
-        val btCalc: Button = findViewById(R.id.btCalcular)
-        val gasolina: EditText = findViewById(R.id.edGasolina)
-        val alcool: EditText = findViewById(R.id.edAlcool)
-        val resultText: TextView = findViewById(R.id.result)
-        val swPercent: Switch = findViewById(R.id.swPercentual)
+
+        btCalc = findViewById(R.id.btCalcular)
+        gasEdtTxt = findViewById(R.id.edGasolina)
+        alcEdtTxt = findViewById(R.id.edAlcool)
+        resTxt = findViewById(R.id.result)
+        swPercent= findViewById(R.id.swPercentual)
+
+        swPercent.isChecked = isSwitchChecked
 
         btCalc.setOnClickListener(View.OnClickListener {
-            if (gasolina.text.isNotEmpty() and alcool.text.isNotEmpty()) {
-                var gasPrice: Double = gasolina.text.toString().toDouble()
-                var etanolPrice: Double = alcool.text.toString().toDouble()
+            if (gasEdtTxt.text.isNotEmpty() and alcEdtTxt.text.isNotEmpty()) {
+                var gasPrice: Double = gasEdtTxt.text.toString().toDouble()
+                var etanolPrice: Double = alcEdtTxt.text.toString().toDouble()
                 if(etanolPrice <= percentual*gasPrice) {
-                    resultText.setText("Álcool vale a pena!")
+                    resTxt.setText("Álcool vale a pena!")
                 } else {
-                    resultText.setText("Álcool NÃO vale a pena!")
+                    resTxt.setText("Álcool NÃO vale a pena!")
                 }
             } else {
-                resultText.setText("Insira valores válidos")
+                resTxt.setText("Insira valores válidos")
             }
         })
 
@@ -42,6 +58,12 @@ class MainActivity : AppCompatActivity() {
             } else {
                 0.75
             }
+            isSwitchChecked = isChecked
+
+            sharedPreferences.edit()
+                .putFloat("percentual", percentual.toFloat())
+                .putBoolean("switchChecked", isSwitchChecked)
+                .apply()
         }
     }
 override fun onResume(){
