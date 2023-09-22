@@ -80,12 +80,10 @@ As cores mudaram também, seguindo a paleta base a seguir:
 
 ### Novo layout e temas :woman_artist:
 
-Com base nos dois tópicos anteriores e na tela já existente, os temas _claro_ e _escuro_ foram mudados e também ocorreu melhoria nos campos de texto.
+Com base nos dois tópicos anteriores e na tela já existente, os temas _claro_ e _escuro_ foram mudados e também ocorreu melhoria nos campos de texto, sendo adicionado um ícone.
 
-<div style="display: flex; flex-direction=row; gap=50px">
-    <img src="light_mode.png" alt="Light Mode">
-    <img src="dark_mode.png" alt="Dark Mode">
-</div>
+![light and dark modes](light_and_dark_modes.png)
+
 ---
 
 ## Usando o SharedPreferences :selfie:
