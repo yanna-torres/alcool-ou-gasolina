@@ -134,7 +134,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
-## Resultados
+## Resultados :play_or_pause_button:
 
 ![light result](light.gif)
 ![dark result](dark.gif)
