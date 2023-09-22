@@ -82,9 +82,9 @@ As cores mudaram também, seguindo a paleta base a seguir:
 
 Com base nos dois tópicos anteriores e na tela já existente, os temas _claro_ e _escuro_ foram mudados e também ocorreu melhoria nos campos de texto.
 
-![light mode]()
+![light mode](light_mode.png)
 
-![dark mode]()
+![dark mode](dark_mode.png)
 
 ---
 
