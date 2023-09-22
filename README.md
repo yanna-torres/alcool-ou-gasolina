@@ -133,3 +133,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
     }
 }
 ```
+
+## Resultados
+
+![light result](light.gif)
+![dark result](dark.gif)
