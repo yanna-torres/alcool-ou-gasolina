@@ -82,10 +82,10 @@ As cores mudaram também, seguindo a paleta base a seguir:
 
 Com base nos dois tópicos anteriores e na tela já existente, os temas _claro_ e _escuro_ foram mudados e também ocorreu melhoria nos campos de texto.
 
-![light mode](light_mode.png)
-
-![dark mode](dark_mode.png)
-
+<div style="display: flex; flex-direction=row; gap=50px">
+    <img src="light_mode.png" alt="Light Mode">
+    <img src="dark_mode.png" alt="Dark Mode">
+</div>
 ---
 
 ## Usando o SharedPreferences :selfie:
